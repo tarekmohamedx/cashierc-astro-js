@@ -1,0 +1,164 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource/inter";
+
+import { Send } from "lucide-react";
+import { Logo } from "@/components/icons/logo";
+
+import facebook from "@/assests/members/facebook-fill.svg";
+import instagram from "@/assests/members/insta-fill.svg";
+import twitter from "@/assests/members/twitter-fill.svg";
+import youtube from "@/assests/members/youtube-fill.svg";
+
+import { NAVIGATION_LIST } from "@/data/navigationList";
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  image: string;
+  type?: "website" | "article";
+  publishDate?: Date;
+}
+
+const { title, description, keywords, image, type, publishDate } = Astro.props;
+const { href, origin } = Astro.url;
+const imageSource = `${origin}${image}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content="Cashierc" />
+    <meta name="language" content="English" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="image" content={imageSource} />
+    <meta name="robots" content="max-image-preview:large" />
+    <link rel="canonical" href={href} />
+    <link rel="alternate" href={href} hreflang="en" />
+    <!-- article tags -->
+    {
+      type === "article" && publishDate && (
+        <>
+          <meta property="article:published_time" content={publishDate.toISOString()} />
+          <meta name="publish_date" property="og:publish_date" content={publishDate.toISOString()} />
+        </>
+      )
+    }
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type || "website"} />
+    <meta property="og:url" content={href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageSource} />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content={title} />
+
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageSource} />
+    <meta property="twitter:url" content={href} />
+
+    <ViewTransitions fallback="animate" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="px-4 sm:px-8 lg:px-12 xl:px-16 mx-auto max-w-screen-3xl font-inter text-foreground">
+      <slot />
+    </div>
+    <footer class="bg-foreground py-12">
+      <div
+        class="px-4 sm:px-8 lg:px-12 xl:px-16 mx-auto max-w-screen-3xl font-inter text-white flex flex-col-reverse lg:flex-row justify-between gap-x-12 gap-y-12"
+      >
+        <div class="flex-1 flex flex-col gap-y-5">
+          <div class="flex items-center gap-x-2">
+            <Logo className="size-10" />
+            <span class="font-bold text-3xl">Cashierc</span>
+          </div>
+          <div class="flex items-center gap-x-4">
+            <a href="/" target="_blank" rel="noopener noreferrer" class="bg-white p-1 inline-block rounded-full">
+              <img src={facebook.src} alt="facebook" class="w-8" loading="lazy" />
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer" class="bg-white p-1 inline-block rounded-full">
+              <img src={instagram.src} alt="instagram" class="w-8 scale-90" loading="lazy" />
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer" class="bg-white p-1 inline-block rounded-full">
+              <img src={twitter.src} alt="twitter" class="w-8" loading="lazy" />
+            </a>
+            <a href="/" target="_blank" rel="noopener noreferrer" class="bg-white p-1 inline-block rounded-full">
+              <img src={youtube.src} alt="youtube" class="w-8" loading="lazy" />
+            </a>
+          </div>
+          <p class="text-white/90 text-sm mt-auto">Copyright © 2024 Cashierc. All rights reserved</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-y-12">
+          <div class="space-y-3">
+            <h2 class="font-bold text-lg">Company</h2>
+            <ul class="space-y-2">
+              {
+                NAVIGATION_LIST.map((item) => {
+                  if (item.isVariant) return null;
+
+                  return (
+                    <li>
+                      <a href={item.path}>{item.label}</a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h2 class="font-bold text-lg">Support</h2>
+            <ul class="space-y-2">
+              {
+                NAVIGATION_LIST.map((item) => {
+                  if (item.isVariant) return null;
+
+                  return (
+                    <li>
+                      <a href={item.path}>{item.label}</a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+          <div class="space-y-3 col-span-2 md:col-span-1">
+            <h2 class="font-bold text-lg">Subscribe to our newsletter</h2>
+            <p class="md:max-w-xs">Subscribe our newsletter to get our latest update & news</p>
+            <form class="flex gap-x-2">
+              <div class="relative w-full max-w-lg">
+                <input type="email" placeholder="Your email address" class="bg-white/10 p-2 rounded-md w-full" />
+                <button
+                  type="submit"
+                  class="absolute right-0 top-1/2 -translate-y-1/2 bg-primary aspect-square p-2 rounded-e-md"
+                >
+                  <Send className="size-6 text-white" />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

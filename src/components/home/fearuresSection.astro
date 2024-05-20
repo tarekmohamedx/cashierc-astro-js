@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Header from "@/components/sectionHeader.astro";
+import { CircleCheck } from "lucide-react";
+
+const features = (await getCollection("features")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="features" class="py-16 space-y-12">
+  <Header>Features</Header>
+  <div class="flex flex-col items-center">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-8 2xl:gap-x-24">
+      {
+        features.map(({ data }) => (
+          <li class="px-4 py-6 max-w-3xl flex gap-x-2 bg-white rounded-xl shadow-[0px_0px_12px_0px_rgba(0,0,0,0.1)]">
+            <div>
+              <CircleCheck className="size-8 text-white fill-primary" />
+            </div>
+            <div class="space-y-1">
+              <h3 class="font-semibold text-xl">{data.title}</h3>
+              <p class="text-[#6C6C72]">{data.content}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

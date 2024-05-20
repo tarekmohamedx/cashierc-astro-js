@@ -1,0 +1,11 @@
+---
+import Header from "@/components/sectionHeader.astro";
+import { TeamCarousel } from "@/components/teamCarousel";
+---
+
+<section id="our-team" class="py-16 space-y-12">
+  <Header>
+    <span class="text-4xl lg:text-6xl">Our creative team</span>
+  </Header>
+  <TeamCarousel client:visible />
+</section>

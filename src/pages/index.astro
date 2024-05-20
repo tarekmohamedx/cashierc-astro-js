@@ -1,0 +1,29 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { NavigationBar } from "@/components/navigationBar";
+import HeroSection from "@/components/home/heroSection.astro";
+import FearuresSection from "@/components/home/fearuresSection.astro";
+import HowItWorksSection from "@/components/home/howItWorksSection.astro";
+import DownloadSection from "@/components/home/downloadSection.astro";
+import TeamSection from "@/components/home/teamSection.astro";
+import ContactSection from "@/components/home/contactSection.astro";
+---
+
+<Layout
+  title="Cashierc"
+  description="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  keywords="cashierc, cashierc.com, cashierc website, cashierc app, cashierc web app, cashierc mobile app, cashierc mobile, cashierc android, cashierc ios, cashierc mobile app, cashierc mobile website, cashierc mobile web app, cashierc mobile web, cashierc mobile website, cashierc mobile site, cashierc mobile web site, cashierc mobile web application, cashierc mobile web app, cashierc mobile web application"
+  image="/images/cashierc.png"
+  type="website"
+>
+  <NavigationBar client:idle />
+  <h1 class="sr-only">Cashierc Home Page</h1>
+  <main>
+    <HeroSection />
+    <FearuresSection />
+    <HowItWorksSection />
+    <DownloadSection />
+    <TeamSection />
+    <ContactSection />
+  </main>
+</Layout>
