@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
-import member from "@/assests/members/member.png";
+import member from "@/assests/members/member.webp";
+import member2 from "@/assests/members/member.png";
 
 type MemberType = {
   id: string;
@@ -18,7 +19,7 @@ export const teamMembers: MemberType[] = [
   {
     id: uuidV4(),
     name: "Mahmoud Elmorsy",
-    role: "Computer Vision Engineer",
+    role: "Computer Vision-Ai",
     image: member.src,
     socials: {
       facebook: "https://www.facebook.com/mahmoud.elmorsy.7",
@@ -29,8 +30,8 @@ export const teamMembers: MemberType[] = [
   {
     id: uuidV4(),
     name: "Mahmoud Elmorsy",
-    role: "Computer Vision-Ai",
-    image: member.src,
+    role: "Computer Vision Engineer",
+    image: member2.src,
     socials: {
       facebook: "https://www.facebook.com/mahmoud.elmorsy.7",
       instagram: "https://www.instagram.com/mahmoud.elmorsy.7",
