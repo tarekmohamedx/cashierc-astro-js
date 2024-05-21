@@ -1,5 +1,5 @@
 import { v4 as uuidV4 } from "uuid";
-import member from "@/assests/members/member.webp";
+import member from "@/assests/members/member.png";
 
 type MemberType = {
   id: string;
@@ -18,7 +18,7 @@ export const teamMembers: MemberType[] = [
   {
     id: uuidV4(),
     name: "Mahmoud Elmorsy",
-    role: "Computer Vision-Ai",
+    role: "Computer Vision Engineer",
     image: member.src,
     socials: {
       facebook: "https://www.facebook.com/mahmoud.elmorsy.7",
