@@ -1,0 +1,47 @@
+---
+import { StatCounter } from "@/components/statCounter";
+
+import Header from "@/components/sectionHeader.astro";
+import { Download, ThumbsUp, Star } from "lucide-react";
+
+import android from "@/assests/android.webp";
+import apple from "@/assests/apple.png";
+---
+
+<section id="how-it-works" class="py-16 space-y-12">
+  <Header>
+    <span class="text-4xl lg:text-6xl">What are you waiting for?!</span>
+  </Header>
+  <div class="flex items-center justify-center flex-col-reverse md:flex-row">
+    <div class="flex flex-col gap-6 text-center md:text-start">
+      <h3 class="text-[#727880] font-bold text-3xl sm:text-4xl">Get it now for free</h3>
+      <h4 class="font-bold text-3xl sm:text-4xl">Download App Now</h4>
+      <p class="text-[#727880] text-xl">A Great App Makes Your Life Better</p>
+      <div class="flex items-center gap-x-4">
+        <a href="https://play.google.com/store/apps/details?id=com.cashierc&hl=en&gl=US" target="_blank"> <img src={android.src} alt="download app" class="w-48" /></a>
+        <a href="#" target="_blank"> <img src={apple.src} alt="download app" class="w-48" /></a>
+        
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="text-white bg-primary rounded-md shadow flex flex-col items-center p-4">
+          <Download className="size-8" />
+          <StatCounter start={0} end={59865} client:visible />
+          <p>Downloads</p>
+        </div>
+        <div class="text-white bg-primary rounded-md shadow flex flex-col items-center p-4">
+          <ThumbsUp className="size-8" />
+          <StatCounter start={0} end={29852} client:visible />
+          <p>Like</p>
+        </div>
+        <div class="text-white bg-primary rounded-md shadow flex flex-col items-center p-4">
+          <Star className="size-8" />
+          <StatCounter start={0} end={1000} client:visible />
+          <p>stars</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src={"/src/assests/iPhone13.png"} alt="how it works" class="w-full max-w-[40rem]" loading="lazy" />
+    </div>
+  </div>
+</section>

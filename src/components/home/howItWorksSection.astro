@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Header from "@/components/sectionHeader.astro";
+
+const howItWorks = (await getCollection("howItWorks")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="how-it-works" class="py-16 space-y-12">
+  <Header>How it works</Header>
+  <div class="flex flex-col items-center">
+    <ul class="space-y-12 lg:space-y-0">
+      {
+        howItWorks.map(({ data }) => (
+          <li class={`w-full flex flex-col ${data.order % 2 ? "sm:flex-row" : "sm:flex-row-reverse"} items-center`}>
+            <div class="sm:basis-1/2">
+              <img src={data.image} alt={data.content} class="max-w-[40rem] w-full" loading="lazy" />
+            </div>
+            <div class="sm:basis-1/2 flex items-center justify-center">
+              <p class="font-semibold text-2xl sm:text-3xl lg:text-4xl max-w-xl text-balance text-center">
+                {data.content}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

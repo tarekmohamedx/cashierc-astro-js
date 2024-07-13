@@ -1,0 +1,29 @@
+---
+import Header from "@/components/sectionHeader.astro";
+import { Mail, MapPin, Phone } from "lucide-react";
+---
+
+<section id="contact-us" class="pt-16 pb-24 space-y-12">
+  <Header>
+    <span class="text-4xl lg:text-6xl">Feel free to contact us</span>
+  </Header>
+  <div class="flex flex-col items-center gap-4">
+    <p class="text-typography text-xl max-w-2xl text-balance text-center">
+      If you have any questions or need help, feel free to contact us. We are always happy to help you.
+    </p>
+    <div class="flex flex-col md:flex-row items-center text-center md:divide-x-2 divide-foreground/50">
+      <a href="/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-lg px-4">
+        <MapPin className="size-6 hidden sm:block" client:visible />
+        <span>Mansoura, Dakahlia, Egypt</span>
+      </a>
+      <a href="tel:+1234567890" class="flex items-center gap-1 text-lg px-4">
+        <Phone className="size-6 hidden sm:block" client:visible />
+        <span class="whitespace-nowrap">+20 01515151515</span>
+      </a>
+      <a href="mailto:" class="flex items-center gap-1 text-lg px-4">
+        <Mail className="size-6 hidden sm:block" client:visible />
+        <span class="whitespace-nowrap">cashierc@gmail.com</span>
+      </a>
+    </div>
+  </div>
+</section>
